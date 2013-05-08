@@ -1,0 +1,86 @@
+向量(vector)
+连续存储的元素<vector>
+Vector<int>c;
+c.back()    传回最后一个数据，不检查这个数据是否存在。
+c.clear()     移除容器中所有数据。
+c.empty()   判断容器是否为空。
+c.size()    容器中元素的数目
+c.front()     传回第一个数据。
+c.pop_back() 删除最后一个数据。
+c.push_back(elem)  在尾部加入一个数据。
+集合(set)
+set/multiset会根据待定的排序准则，自动将元素排序。两者不同在于前者不允许元素重复，而后者允许。
+1) 不能直接改变元素值，因为那样会打乱原本正确的顺序，要改变元素值必须先删除旧元素，再插入新元素
+2) 不提供直接存取元素的任何操作函数，只能通过迭代器进行间接存取，而且从迭代器角度来看，元素值是常数
+
+创建： set<int> s; //默认的是按从小到大
+set<int,greater<int> > s; //按从大到小排
+set<type,op> s;
+struct op{
+    bool operator()(const type a,const type b)const{
+        return a<b;
+    }
+};
+例如：
+struct sgreater{
+    bool operator()(const string a,const string b)const{
+        return a<b;
+    }
+};
+set<string,sgreater> s;  //s会按字典序从大到小排(不写比较函数默认从小到大)
+
+// 迭代器遍历  set<int>::iterator iter;   
+   for (iter = s.begin(); iter != s.end(); iter++)  printf(“%d\n”,*iter);
+主要函数：
+s.insert(value); 插入value
+s.count(value)  返回set对象内元素值为value的元素个数
+s.clear()，移除set容器内所有元素
+s.erase(value) 移除set容器内元素值为value的所有元素，返回移除的元素个数
+s.empty() 是否为空
+
+映射（MAP）
+1. map构造函数：map<key,value>变量名
+2. map添加数据：insert+pair构造函数map<int ,string> maplive; 1.maplive.insert(pair<int,string>(102,"aclive"));2, maplive[112]="April";//map中最简单最常用的插入添加！3.map中元素的查找：find函数
+find()函数返回一个迭代器指向键值为key的元素，如果没找到就返回指向map尾部的迭代器。
+map<int ,string >::iterator pos;//pos为迭代器pos=mapint.find(112);if(pos==mapint.end())
+cout<<"we do not find 112"<<endl;else cout<<"wo find 112"<<endl;4.map中元素的删除：erase函数如果删除112；map<int ,string >::iterator pos;pos=mapint.find(112);if(pos==mapint.end())cout<<"we do not find 112"<<endl;else mapint.erase(pos); //delete 112;
+
+基本函数：
+begin() 返回指向map头部的迭代器
+end() 返回指向map末尾的迭代器
+size() 返回map中元素的个数
+max_size() 返回可以容纳的最大元素个数
+clear(） 删除所有元素erase() 删除一个元素，erase(迭代器)
+insert() 插入元素,一般这样配合这使用insert(pair<key,value>(,));
+swap() 交换两个map
+empty() 如果map为空则返回true
+count() 返回指定元素出现的次数find() 查找一个元素,返回一个key值给定的元素的迭代器，若是不存在则返回end()
+
+注：Map中的元素是自动按key升序排序,所以不能对map用sort函数
+排序（sort）
+int cmp(const type a,const type b) { return a<b; }
+sort(begin, end, cmp);
+
+优先队列（priority_queue）
+默认从大到小
+priority_queue<int> qi;     //  great<int>(小到大) less<int>(大到小)
+priority_queue<type, vector<type>, cmp> qi; 第二个参数为容器类型。第三个参数为比较函数
+struct cmp {
+    bool operator()(const type i,const type j)const {
+       return i>j;
+    }
+};
+3 、重载运算符
+struct node // 最小优先队列{
+    int id,len;
+    bool operator < (const node &b)const{      // 只能重载小于号
+        return len>b.len;
+    }
+};
+priority_queue<node> Q;
+
+常用函数
+Q.push();
+Q.pop();
+Q.top();
+Q.empt();
