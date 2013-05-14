@@ -1,5 +1,4 @@
 /****HEADER*****/
-#define LOCAL
 
 #include<cstdio>
 #include<cmath>
@@ -58,11 +57,8 @@ template<class T> inline T cub(T a){return a*a*a;}
 
 int main(){
 
-#ifndef OJ
 	freopen("in.in", "r", stdin);
 	//freopen("out.txt", "w", stdout);
-#endif
-
-
+	
 	return 0;
 }
