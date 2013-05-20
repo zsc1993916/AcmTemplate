@@ -19,7 +19,7 @@
 using namespace std;
 
 //define
-
+#define mem(a,b) memset(a,b,sizeof(a))
 //typedef
 typedef long long LL;
 typedef double DB;
@@ -39,6 +39,7 @@ typedef vector<PII> VII;
 typedef vector<VI> VVI;
 
 //Constant
+const int N = 105;
 const int MOD = int(1e9) + 7;
 const int INF = 0x3f3f3f3f;
 const DB EPS = 1e-9;
@@ -51,14 +52,16 @@ template<class T> inline T min(T a, T b, T c){return min(min(a, b), c);}
 template<class T> inline T max(T a, T b, T c){return max(max(a, b), c);}
 template<class T> inline T sqr(T a){return a*a;}
 template<class T> inline T cub(T a){return a*a*a;}
-
+template<class T> inline T gcd(T a, T b) {return b==0?a:gcd(b,a%b);}
+template<class T> inline T lcm(T a, T b) {return a*b/gcd(a,b);}
 
 /*****MAIN*****/
 
+
 int main(){
 
-	freopen("in.in", "r", stdin);
+	//freopen("in.in", "r", stdin);
 	//freopen("out.txt", "w", stdout);
-	
+
 	return 0;
 }
