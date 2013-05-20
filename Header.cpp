@@ -1,4 +1,4 @@
-/****HEADER*****/
+//HEADER
 
 #include<cstdio>
 #include<cmath>
@@ -40,6 +40,7 @@ typedef vector<VI> VVI;
 
 //Constant
 const int N = 105;
+const int M = 505;
 const int MOD = int(1e9) + 7;
 const int INF = 0x3f3f3f3f;
 const DB EPS = 1e-9;
@@ -48,20 +49,20 @@ const int dx[] = {-1, 1, 0, 0};
 const int dy[] = {0, 0, -1, 1};
 
 //template
-template<class T> inline T min(T a, T b, T c){return min(min(a, b), c);}
-template<class T> inline T max(T a, T b, T c){return max(max(a, b), c);}
+template<class T> inline T Min(T a, T b){return a<b?a:b; }
+template<class T> inline T Max(T a, T b){return a>b?a:b; }
+template<class T> inline T Min(T a, T b, T c){return min(min(a, b), c);}
+template<class T> inline T Max(T a, T b, T c){return max(max(a, b), c);}
 template<class T> inline T sqr(T a){return a*a;}
 template<class T> inline T cub(T a){return a*a*a;}
 template<class T> inline T gcd(T a, T b) {return b==0?a:gcd(b,a%b);}
 template<class T> inline T lcm(T a, T b) {return a*b/gcd(a,b);}
 
-/*****MAIN*****/
-
+//MAIN
 
 int main(){
 
 	//freopen("in.in", "r", stdin);
 	//freopen("out.txt", "w", stdout);
-
 	return 0;
 }
