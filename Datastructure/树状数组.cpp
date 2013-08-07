@@ -1,4 +1,8 @@
 // 树状数组  动态 求前缀和
+
+int lowbit(int x) {       
+    return x&(-x);
+}
 void add(int k){
     while(k < M){
         x[k] ++;
