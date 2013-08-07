@@ -3,9 +3,9 @@
 int lowbit(int x) {       
     return x&(-x);
 }
-void add(int k){
+void add(int k, int d){
     while(k < M){
-        x[k] ++;
+        x[k] += d;
         k += lowbit(k);
     }
 }
