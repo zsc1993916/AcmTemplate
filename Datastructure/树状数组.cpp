@@ -1,19 +1,15 @@
 // 树状数组  动态 求前缀和
 
-int lowbit(int x) {       
-    return x&(-x);
+#define lowbit(a) (a&(-a))
+
+void add(int k, int ad) {
+    for(; k<=n; k += lowbit(k))
+        tr[k] += ad;
 }
-void add(int k, int d){
-    while(k < M){
-        x[k] += d;
-        k += lowbit(k);
-    }
-}
-int sum(int k){
-    int res = 0;
-    while(k > 0){
-        res += x[k];
-        k -= lowbit(k);
-    }
+
+LL sum(int k) {
+    LL res = 0;
+    for(; k>0; k -= lowbit(k))
+        res += tr[k];
     return res;
 }
