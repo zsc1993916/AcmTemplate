@@ -18,35 +18,8 @@
 #include<functional>
 using namespace std;
 
-//define
 #define mem(a,b) memset(a,b,sizeof(a))
-//typedef
-typedef long long LL;
-typedef double DB;
-typedef unsigned long long ULL;
-typedef vector<int> VI;
-typedef vector<char> VC;
-typedef vector<string> VS;
-typedef vector<LL> VL;
-typedef vector<DB> VF;
-typedef set<int> SI;
-typedef set<string> SS;
-typedef map<int, int> MII;
-typedef map<string, int> MSI;
-typedef pair<int, int> PII;
-typedef pair<LL, LL> PLL;
-typedef vector<PII> VII;
-typedef vector<VI> VVI;
-
-//Constant
-const int N = 105;
-const int M = 505;
-const int MOD = int(1e9) + 7;
-const int INF = 0x3f3f3f3f;
-const DB EPS = 1e-9;
-const DB PI = acos(-1.0); //M_PI;
-const int dx[] = {-1, 1, 0, 0};
-const int dy[] = {0, 0, -1, 1};
+typedef long long LL
 
 //template
 template<class T> inline T Min(T a, T b){return a<b?a:b; }
@@ -58,7 +31,14 @@ template<class T> inline T cub(T a){return a*a*a;}
 template<class T> inline T gcd(T a, T b) {return b==0?a:gcd(b,a%b);}
 template<class T> inline T lcm(T a, T b) {return a*b/gcd(a,b);}
 
-//MAIN
+
+//Constant
+const int N = 105;
+const int MOD = int(1e9) + 7;
+const int INF = 0x3f3f3f3f;
+const DB EPS = 1e-9;
+const DB PI = acos(-1.0); //M_PI;
+
 
 int main(){
 
