@@ -19,7 +19,7 @@
 using namespace std;
 
 #define mem(a,b) memset(a,b,sizeof(a))
-typedef long long LL
+typedef long long LL;
 
 //template
 template<class T> inline T Min(T a, T b){return a<b?a:b; }
@@ -36,13 +36,12 @@ template<class T> inline T lcm(T a, T b) {return a*b/gcd(a,b);}
 const int N = 105;
 const int MOD = int(1e9) + 7;
 const int INF = 0x3f3f3f3f;
-const DB EPS = 1e-9;
-const DB PI = acos(-1.0); //M_PI;
+const double EPS = 1e-9;
+const double PI = acos(-1.0); //M_PI;
 
 
 int main(){
 
 	//freopen("in.in", "r", stdin);
-	//freopen("out.txt", "w", stdout);
 	return 0;
 }
