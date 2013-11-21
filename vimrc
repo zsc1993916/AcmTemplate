@@ -11,7 +11,7 @@
 
 
 " 文本格式和排版 
-color desert                    "背景颜色
+color darkblue                   "背景颜色
 set number                      "显示行号
 set tabstop=4                   "Tab跳数
 set hlsearch   			"高亮查找结果
