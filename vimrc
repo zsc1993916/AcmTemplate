@@ -29,7 +29,7 @@ set shiftwidth=4
 set noexpandtab    " 不要用空格代替制表符 
 set wrap        " 不要换行  
 set smarttab      " 在行和段开始处使用制表符 
-
+set guifont=Consolas:h13  " 习惯的字体
 
 "复制粘贴设置
 vmap <C-c> "+yi 
