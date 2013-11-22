@@ -1,0 +1,31 @@
+/*
+无权二分图 最大匹配
+对一侧到每个点找增广路  O(N*E)
+*/
+
+const int N = 1010;
+
+vector<int> G[N];
+int match[N];         // 匹配点
+int vis[N]; 
+int dfs(int u) {
+	for(int i=0, v; i<G[u].size(); i++) {
+		v = G[u][i];
+		if(vis[v]) continue;
+		vis[v] = 1;
+		if(match[v]==-1 || dfs(match[v])) {     
+			match[v] = u;
+			return 1;
+		}
+	}
+	return 0;
+}
+int maxMatch(int lnum) {
+	int res = 0;
+	memset(match, -1, sizeof(match));
+	for(int i=1; i<=lnum; i++) {
+		memset(vis, 0, sizeof(vis));
+		if(dfs(i)) res++;
+	}
+	return res;
+}
