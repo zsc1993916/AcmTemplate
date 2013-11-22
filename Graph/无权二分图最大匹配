@@ -20,7 +20,7 @@ int dfs(int u) {
 	}
 	return 0;
 }
-int maxMatch(int lnum) {
+int maxMatch(int lnum) {       //参数为左边点的个数
 	int res = 0;
 	memset(match, -1, sizeof(match));
 	for(int i=1; i<=lnum; i++) {
