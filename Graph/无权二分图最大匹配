@@ -5,7 +5,7 @@
 
 const int N = 1010;
 
-vector<int> G[N];
+vector<int> G[N];     //老忘记 G[N]的初始化！
 int match[N];         // 匹配点
 int vis[N]; 
 int dfs(int u) {
