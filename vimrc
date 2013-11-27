@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""
+
 """"""""""""""" Zo's vimrc"""""""""""
 "解决windows下的中文乱码问题
 "set fileencodings=utf-8,gbk,chinese  
@@ -29,7 +29,10 @@ set shiftwidth=4
 set noexpandtab    " 不要用空格代替制表符 
 set wrap        " 不要换行  
 set smarttab      " 在行和段开始处使用制表符 
-set guifont=Consolas:h13  " 习惯的字体
+set guifont=courier:h12  " 习惯的字体
+
+"inoremap 后不能加注释
+inoremap { {<CR>}<ESC>kA<CR>
 
 "复制粘贴设置
 vmap <C-c> "+yi 
@@ -41,6 +44,11 @@ imap <C-v> <ESC>"+pa
 set showcmd  
 " 命令行（在状态行下）的高度，默认为1，这里是2  
 set cmdheight=1 
+
+
+if exists("&autoread")		"自动更新文件
+    set autoread
+endif
 
 
 " 快捷键设定 
@@ -83,5 +91,4 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=T <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
-
 
