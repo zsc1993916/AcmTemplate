@@ -1,94 +1,78 @@
+"----Encoding setting----
+set encoding=utf-8              "编码设置
+set ffs=unix,dos,mac            "设置保存系统格式
+set langmenu=zh_CN.utf-8        "中文菜单界面
+language messages zh_CN.utf-8   "中文提示界面
 
-""""""""""""""" Zo's vimrc"""""""""""
-"解决windows下的中文乱码问题
-"set fileencodings=utf-8,gbk,chinese  
-" 解决中文菜单乱码  
-"set langmenu=zh_CN.utf-8  
-"source $VIMRUNTIME/delmenu.vim  
-"source $VIMRUNTIME/menu.vim  
-"解决console输出乱码  
-"language messages zh_CN.utf-8
+"----Basic function----
+set nu                          "显示行号
+set nowb                        "禁止自动保存
+set nocp                        "去除vi一致性
+set ruler                       "显示标尺
+set nobackup                    "禁止缓冲保存
+set showmatch                   "符号自动匹配
+set incsearch                   "搜索增强模式
+set noswapfile                  "去除swap文件
+set history=700                 "设置最大历史记录
+set autochdir                   "设置为当前文件目录
+set backspace=indent,eol,start  "去除键设置
 
 
-" 文本格式和排版 
-color darkblue                   "背景颜色
-set number                      "显示行号
-set tabstop=4                   "Tab跳数
-set hlsearch   			"高亮查找结果
-syntax enable     		"打开语法高亮
-syntax on			"打开语法高亮
-set showmatch 			"设置括号匹配
-set autoindent			"自动对齐
-set ai!				"自动缩进
-set cin                         "c语言缩进
-set formatoptions=tcrqn     " 自动格式化   
-set smartindent  		 "为C程序提供自动缩进  
-set cindent    			" 使用C样式的缩进    
-set softtabstop=4      "统一缩进为4 
-set shiftwidth=4  
-set noexpandtab    " 不要用空格代替制表符 
-set wrap        " 不要换行  
-set smarttab      " 在行和段开始处使用制表符 
-set guifont=courier:h12  " 习惯的字体
+"----Mouse setting----
+set mouse=a                     "开启鼠标模式
+set selection=exclusive 
+set selectmode=mouse,key
 
-"inoremap 后不能加注释
+"----Indent habit----
+set nowrap                      "不自动换行
+set cindent                     "C格式缩进
+set smarttab                    "智能tab
+set expandtab                   "tab用空格代替
+set tabstop=4                   "一个tab=4个字符
+set autoindent                  "自动缩进
+set smartindent                 "智能缩进
+set backspace=2                 "
+set shiftwidth=4                "
+set softtabstop=4               "按一次tab 前进4个字符
+set textwidth=80                "超过80个字符自动换行
+
+"---Auto Complete----
+"三种括号自动补全
 inoremap { {<CR>}<ESC>kA<CR>
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
+inoremap < <><ESC>i
+"一键ctrl+s保存
+map <C-s> <ESC>:wall<CR>
+"一键F9保存
+map <F9> <ESC>:wall<CR>
+"一键分屏打开in.txt/out.txt并自动调整大小
+map <F10> <ESC>:vs out.txt<CR><C-w>L<ESC>:sp in.txt<CR><C-w>h<C-w>20><CR>
+"一键运行run.bat批处理
+map <F5> <ESC>:! run.bat<CR>
 
-"复制粘贴设置
-vmap <C-c> "+yi 
-vmap <C-x> "+c 
-vmap <C-v> c<ESC>"+p 
-imap <C-v> <ESC>"+pa 
+"----Theme setting----
+syntax on                       "开启高亮
+"syntax enable                  "使用高亮
+colorscheme darkblue              "主题配色
+set background=dark             "背景暗色
+set guifont=Source\ Code\ Pro\ ExtraLight:h15          "字体设置
 
-"显示命令
-set showcmd  
-" 命令行（在状态行下）的高度，默认为1，这里是2  
-set cmdheight=1 
-
-
-if exists("&autoread")		"自动更新文件
+"----Autoread the text----  
+filetype on                     "自动识别文件类型
+if exists("&autoread")            "自动读取修改文件
     set autoread
 endif
 
+"----Open with maxwindow in Win32----
+if has('win32')
+    au GUIEnter * simalt ~x
+else
+    au GUIEnter * call MaximizeWindow()
+endif
 
-" 快捷键设定 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""  
-" C的编译和运行  
-map <F5> :call CompileRunGcc()<CR>  
-func! CompileRunGcc()  
-exec "w"  
-exec "!gcc % -o %<"  
-exec "! ./%<"  
-endfunc  
-" C++的编译和运行  
-map <F6> :call CompileRunGpp()<CR>  
-func! CompileRunGpp()  
-exec "w"  
-exec "!g++ % -o %<"  
-exec "! ./%<"   
-endfunction  
-" Python的运行  
-map <F8> :call RunPython()<CR>  
-func! RunPython()   
-    let mp = &makeprg   
-    let ef = &errorformat   
-    let exeFile = expand("%:t")   
-    setlocal makeprg=python\ -u   
-    set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m   
-    silent make %   
-    copen   
-    let &makeprg     = mp   
-    let &errorformat = ef   
+function! MaximizeWindow()
+    silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
-
-"Toggle Menu and Toolbar  
-set guioptions-=m
-set guioptions-=T
-map <silent> <F2> :if &guioptions =~# 'T' <Bar>
-        \set guioptions-=T <Bar>
-        \set guioptions-=m <bar>
-    \else <Bar>
-        \set guioptions+=T <Bar>
-        \set guioptions+=m <Bar>
-    \endif<CR>
-
