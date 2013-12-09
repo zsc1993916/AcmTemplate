@@ -1,8 +1,9 @@
+
 "----Encoding setting----
-set encoding=utf-8              "编码设置
-set ffs=unix,dos,mac            "设置保存系统格式
-set langmenu=zh_CN.utf-8        "中文菜单界面
-language messages zh_CN.utf-8   "中文提示界面
+""set encoding=utf-8              "编码设置
+""set ffs=unix,dos,mac            "设置保存系统格式
+""set langmenu=zh_CN.utf-8        "中文菜单界面
+""language messages zh_CN.utf-8   "中文提示界面
 
 "----Basic function----
 set nu                          "显示行号
@@ -39,15 +40,23 @@ set textwidth=80                "超过80个字符自动换行
 "---Auto Complete----
 "三种括号自动补全
 inoremap { {<CR>}<ESC>kA<CR>
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
-inoremap < <><ESC>i
+"inoremap ( ()<ESC>i
+"inoremap [ []<ESC>i
+"inoremap " ""<ESC>i
+"inoremap ' ''<ESC>i
+"inoremap < <><ESC>i
+":inoremap " ""<ESC>i  
+":inoremap ' ''<ESC>i 
+
+
 "一键ctrl+s保存
 map <C-s> <ESC>:wall<CR>
-"一键F9保存
-map <F9> <ESC>:wall<CR>
+"一键F9 运行
+"map <F9> :call CR()<CR> 
+"func CR() 
+"exec "w"
+"exec "!start cmd /c g++ %<.cpp -o %< & %< "
+"endfunc
 "一键分屏打开in.txt/out.txt并自动调整大小
 map <F10> <ESC>:vs out.txt<CR><C-w>L<ESC>:sp in.txt<CR><C-w>h<C-w>20><CR>
 "一键运行run.bat批处理
@@ -58,7 +67,7 @@ syntax on                       "开启高亮
 "syntax enable                  "使用高亮
 colorscheme darkblue              "主题配色
 set background=dark             "背景暗色
-set guifont=Source\ Code\ Pro\ ExtraLight:h15          "字体设置
+set guifont=consolas:h11           "字体设置
 
 "----Autoread the text----  
 filetype on                     "自动识别文件类型
