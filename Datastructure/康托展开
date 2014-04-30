@@ -1,0 +1,22 @@
+struct Node{  //康托展开对阶乘hash  原型八数码
+    int c,m[9];
+    int ok() {
+        for(int i=0; i<9; i++) {
+            if(m[i]!=i+1) return 0;
+        }
+        return 1;
+    }
+    int hash() {
+        int i,j,k,sum=0;
+        for(i=0;i<9;i++){
+            k=0;
+            for(j=i+1;j<9;j++) if(m[j]<m[i]) k++;
+            sum+=k*fac[8-i];
+        }
+        return sum;
+    }
+    void deb(){
+        for(int i=0; i<9; i++) printf("%d", m[i]);
+        printf("\n");
+    }
+}nod;
