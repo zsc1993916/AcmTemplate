@@ -8,6 +8,9 @@ c.size()    容器中元素的数目
 c.front()     传回第一个数据。
 c.pop_back() 删除最后一个数据。
 c.push_back(elem)  在尾部加入一个数据。
+
+
+
 集合(set)
 set/multiset会根据待定的排序准则，自动将元素排序。两者不同在于前者不允许元素重复，而后者允许。
 1) 不能直接改变元素值，因为那样会打乱原本正确的顺序，要改变元素值必须先删除旧元素，再插入新元素
@@ -37,6 +40,7 @@ s.count(value)  返回set对象内元素值为value的元素个数
 s.clear()，移除set容器内所有元素
 s.erase(value) 移除set容器内元素值为value的所有元素，返回移除的元素个数
 s.empty() 是否为空
+lower_bound,upper_bound
 
 映射（MAP）
 1. map构造函数：map<key,value>变量名
