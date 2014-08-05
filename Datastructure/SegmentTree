@@ -1,0 +1,49 @@
+
+LL tr[N<<2],add[N<<2],AddNum;
+int ql, qr;
+void Update(int n){
+    tr[n]=tr[lson]+tr[rson];
+}
+void PushDown(int n, int len){
+    if(add[n]) {
+        add[lson] += add[n];
+        add[rson] += add[n];
+        tr[lson] += add[n]*(len-len/2);
+        tr[rson] += add[n]*(len/2);
+        add[n] = 0;
+    }
+}
+void Build(int l, int r, int n){
+    add[n]=0;
+    if(l==r) {
+        scanf("%lld", &tr[n]);
+        return ;
+    }
+    int m=(l+r)/2;
+    Build(l,m,lson);
+    Build(m+1,r,rson);
+    Update(n);
+}
+void Add(int l, int r, int n) {
+    if(ql<=l && qr>=r) {
+        add[n] += AddNum;
+        tr[n] += AddNum*(r-l+1);
+        return;
+    }
+    PushDown(n,r-l+1);
+    int m=(l+r)/2;
+    if(ql<=m) Add(l,m,lson);
+    if(qr>m) Add(m+1,r,rson);
+    Update(n);
+}
+LL Query(int l, int r, int n) {
+    if(ql<=l&&qr>=r) {
+        return tr[n];
+    }
+    PushDown(n,r-l+1);
+    LL res=0;
+    int m = (l+r)/2;
+    if(ql<=m) res += Query(l,m,lson);
+    if(qr>m) res += Query(m+1,r,rson);
+    return res;
+}
